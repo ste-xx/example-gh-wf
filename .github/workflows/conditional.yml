@@ -8,8 +8,7 @@ jobs:
   job:
     runs-on: ubuntu-latest
     steps: 
-       - run: |
-          echo "foo={\"bar\": false, \"baz\": \"bazz\"}" >> "$GITHUB_OUTPUT"
+      - run: echo 'foo={"bar": false, "baz": "bazz"}' >> "$GITHUB_OUTPUT"
         id: test
       - if: ${{ !fromJSON(steps.test.outputs.foo).bar && fromJSON(steps.test.outputs.foo).baz == 'bazz'}}
         run: echo "print"
