@@ -10,4 +10,5 @@ jobs:
     steps: 
       - run: echo 'foo={"bar":true}' >> "$GITHUB_OUTPUT"
         id: test
-      - run: echo "${{ fromJSON(steps.test.outputs.foo).bar }}"
+      - if: ${{ fromJSON(steps.test.outputs.foo).bar }}
+        run: echo "print"
