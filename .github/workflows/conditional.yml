@@ -1,0 +1,13 @@
+name: conditional test
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo 'foo={"bar":true}' >> "$GITHUB_OUTPUT"
+        id: test
+      - run: echo "${{ fromJSON(steps.test.outputs.foo).bar }}"
